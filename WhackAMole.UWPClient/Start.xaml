@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="WhackAMole.UWPClient.Start"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WhackAMole.UWPClient"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="Dark"
+    mc:Ignorable="d">
+   
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <MediaElement Source="Assets/whackmole.mp4" IsLooping="True"/>
+        <Image Height="150" Width="150" Margin="20" Source="Assets/logo.png" VerticalAlignment="Bottom" HorizontalAlignment="Left" IsTapEnabled="False" IsRightTapEnabled="False" IsDoubleTapEnabled="False" IsHoldingEnabled="False"/>
+        <!--<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            
+            <TextBlock HorizontalAlignment="Center" Text="Whack-A-Pod" Style="{ThemeResource HeaderTextBlockStyle}" FontSize="68" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Center" Text="Can Your Bring the Cluster Down?" Style="{ThemeResource HeaderTextBlockStyle}"/>
+        </StackPanel>-->
+        <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Tap Anywhere to Play Now" Style="{ThemeResource HeaderTextBlockStyle}" FontWeight="Bold" Margin="0,0,0,40"/>
+        
+    </Grid>
+</Page>

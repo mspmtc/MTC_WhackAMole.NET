@@ -1,0 +1,65 @@
+
+    <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WhackAMole.UWPClient"
+    xmlns:local2="using:WhackAMole.UWPClient.Controls">
+        
+    <Style TargetType="local2:MoleControl" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:MoleControl">
+                    
+                    
+                    <Canvas Visibility="{Binding IsVisible}" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="Standard">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard x:Name="myStoryboard">
+                                        <DoubleAnimation
+              Storyboard.TargetName="PART_Value"
+              Storyboard.TargetProperty="Opacity"
+              From="1.0" To="0.0" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Canvas.RenderTransform>
+                            <TranslateTransform x:Name="PART_MoleTransform" X="{Binding CurrentPosition.X}" Y="{Binding CurrentPosition.Y}"/>
+                        </Canvas.RenderTransform>
+                     
+                        <!--<Line x:Name="PART_Line" Fill="{TemplateBinding Background}"/>-->
+                        <Border x:Name="PART_DisplayBorder"  >
+                            
+                            <Border.RenderTransform>
+                                <CompositeTransform x:Name="PART_DisplayTransform"   />
+
+                            </Border.RenderTransform>
+                            <TextBlock Foreground="{Binding Color}"  >
+                              
+                            <Run x:Name="PART_MoleName" Text="{Binding MoleName}"/>
+                            <LineBreak/>
+                            <Run x:Name="PART_Timestamp" Text="{Binding Timestamp}"/>
+                            </TextBlock>
+                        </Border>
+                        <Ellipse x:Name="PART_Mole" Height="{Binding Height, RelativeSource={RelativeSource Mode=TemplatedParent}}" Width="{Binding Width, RelativeSource={RelativeSource Mode=TemplatedParent}}" 
+                                Fill="{Binding Color}"  
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                     
+                        <!--<TextBlock x:Name="PART_Value" Text="{Binding CurrentChar}" Foreground="Black" FontWeight="Bold" FontSize="16" IsTapEnabled="False" >
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="PART_ValueTransform" ></TranslateTransform>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>-->
+                        <TextBlock x:Name="PART_Value" Text="&#xEB52;" FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="Bold" FontSize="16" IsTapEnabled="False" >
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="PART_ValueTransform" ></TranslateTransform>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

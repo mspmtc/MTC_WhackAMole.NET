@@ -1,0 +1,106 @@
+{
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "molecloud",
+    "namespace": "default",
+    "selfLink": "/apis/extensions/v1beta1/namespaces/default/deployments/molecloud",
+    "uid": "fa6c9111-8e8e-11e7-8b9d-000d3a61e4b1",
+    "resourceVersion": "54224",
+    "generation": 2,
+    "creationTimestamp": "2017-08-31T20:57:19Z",
+    "labels": {
+      "app": "molecloud",
+      "version": "v70"
+    },
+    "annotations": {
+      "deployment.kubernetes.io/revision": "2"
+    }
+  },
+  "spec": {
+    "replicas": 3,
+    "selector": {
+      "matchLabels": {
+        "app": "molecloud",
+        "version": "v70"
+      }
+    },
+    "template": {
+      "metadata": {
+        "name": "molecloud",
+        "creationTimestamp": null,
+        "labels": {
+          "app": "molecloud",
+          "version": "v70"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "molecloud",
+            "image": "molereg.azurecr.io/whackamole-molecloud:v70",
+            "env": [
+              {
+            "name": "NODE_NAME",
+            "valueFrom": {
+              "fieldRef": {
+                "fieldPath": "spec.nodeName"
+              }
+            }
+          },
+          {
+            "name": "POD_NAME",
+            "valueFrom": {
+              "fieldRef": {
+                "fieldPath": "metadata.name"
+              }
+            }
+          }
+            ],
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "IfNotPresent",
+            "securityContext": {
+              "privileged": false
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {},
+           "imagePullSecrets": [
+          {
+            "name": "molesecret"
+          }
+        ],
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": 1,
+        "maxSurge": 1
+      }
+    }
+  },
+  "status": {
+    "observedGeneration": 2,
+    "replicas": 3,
+    "updatedReplicas": 3,
+    "readyReplicas": 3,
+    "availableReplicas": 3,
+    "conditions": [
+      {
+        "type": "Available",
+        "status": "True",
+        "lastUpdateTime": "2017-08-31T20:59:48Z",
+        "lastTransitionTime": "2017-08-31T20:59:48Z",
+        "reason": "MinimumReplicasAvailable",
+        "message": "Deployment has minimum availability."
+      }
+    ]
+  }
+}

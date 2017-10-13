@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="WhackAMole.UWPClient.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WhackAMole.UWPClient"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    RequestedTheme="Dark"
+    mc:Ignorable="d">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition/>
+        </TransitionCollection>
+    </Page.Transitions>
+    <Page.Resources>
+
+        <DataTemplate x:Key="PodTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding MoleName}"/>
+                <TextBlock Grid.Column ="2" Text="{Binding Phase}" HorizontalAlignment="Right"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="MolePen"  >
+            <Canvas.Background>
+                <ImageBrush ImageSource="Assets/logo.png" Opacity="0.25" Stretch="None"/>
+            </Canvas.Background>
+        </Canvas>
+        <Grid x:Name="InfoPane" Grid.Column="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20" />
+
+            </Grid.RowDefinitions>
+            <TextBlock Text="Whack-A-Container" Foreground="CornflowerBlue" Style="{ThemeResource SubheaderTextBlockStyle}" FontWeight="Bold" Margin="0,0,40,0"/>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Nodes"/>
+                <ListView Grid.Row="1" ItemsSource="{Binding Nodes}" DisplayMemberPath="Name" Margin="0,0,0,40"/>
+                <TextBlock Grid.Row="2" Text="Containers" />
+                <ListView Grid.Row="3" ItemsSource="{Binding Moles}" ItemTemplate="{StaticResource PodTemplate}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="4" Background="CornflowerBlue" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height=" 10"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Whack Count" HorizontalAlignment="Center" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                <TextBlock x:Name="WhackCount" Grid.Row="2" Text="{Binding WhackCount}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="84"/>
+            </Grid>
+            <!--<Button x:Name="StartButton" Margin="20" Grid.Row="6" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="StartButton_Click">
+                <Viewbox>
+                    <StackPanel >
+                        <SymbolIcon Symbol="Play" />
+                        <TextBlock Text="Start" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Viewbox>
+                
+            </Button>-->
+        </Grid>
+    </Grid>
+</Page>

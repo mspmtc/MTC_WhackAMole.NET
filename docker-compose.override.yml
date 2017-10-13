@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  whackamole.molecloud:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
+  whackamole.kubeadmin:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  whackamole.molecloud:
+    image: whackamole-molecloud
+    build:
+      context: ./WhackAMole.MoleCloud
+      dockerfile: Dockerfile
+
+  whackamole.kubeadmin:
+    image: whackamole-kubeadmin
+    build:
+      context: ./WhackAMole.KubeAdmin
+      dockerfile: Dockerfile
+   
