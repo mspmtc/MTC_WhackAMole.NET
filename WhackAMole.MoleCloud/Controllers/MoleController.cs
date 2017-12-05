@@ -10,14 +10,15 @@ using WhackAMole.MoleCloud.Models;
 namespace WhackAMole.MoleCloud.Controllers
 {
     [Route("api/[controller]")]
-    public class MoleController : Controller
+    public class 
+        MoleController : Controller
     {
         private const int START = 65;
         private const int END = 91;
         private int _count = START;
 
-        private const string HEX_COLOR = "FF691E"; //ORANGEISH
-        //private const string HEX_COLOR = "7FC9FF"; //BLUEISH
+//        private const string HEX_COLOR = "FF691E"; //ORANGEISH
+        private const string HEX_COLOR = "7FC9FF"; //BLUEISH
         //private const string HEX_COLOR = "00FF21"; //GREENISH
 
 
