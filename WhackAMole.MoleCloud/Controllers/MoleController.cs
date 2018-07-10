@@ -19,7 +19,7 @@ namespace WhackAMole.MoleCloud.Controllers
         private int _count = START;
 
        // private const string HEX_COLOR = "FF691E"; //ORANGEISH
-      //private const string HEX_COLOR = "7FC9FF"; //BLUEISH
+       //private const string HEX_COLOR = "7FC9FF"; //BLUEISH
        private const string HEX_COLOR = "00FF21"; //GREENISH
 
 
