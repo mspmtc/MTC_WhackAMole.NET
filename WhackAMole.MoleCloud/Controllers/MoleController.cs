@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using WhackAMole.MoleCloud.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,10 +19,14 @@ namespace WhackAMole.MoleCloud.Controllers
 
         private int _count = START;
 
-       //private const string HEX_COLOR = "FF691E"; //ORANGEISH
-       private const string HEX_COLOR = "7FC9FF"; //BLUEISH
-       //const string HEX_COLOR = "00FF21"; //GREENISH
+        //private const string HEX_COLOR = "FF691E"; //ORANGEISH
+        private readonly string HEX_COLOR = "7FC9FF"; //BLUEISH
+        //const string HEX_COLOR = "00FF21"; //GREENISH
 
+        public MoleController(IOptions<MoleSettings> molesettings)
+        {
+            HEX_COLOR = molesettings.Value.Color;
+        }
 
         [HttpGet]
         public IActionResult Get()
