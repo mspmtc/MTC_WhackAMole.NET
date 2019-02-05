@@ -16,6 +16,7 @@ namespace WhackAMole.MoleCloud.Controllers
         private const int START = 65;
         private const int END = 91;
 
+        readonly string HEX_COLOR = "00FF00";
 
         private int _count = START;
 
